@@ -26,6 +26,13 @@ return [
                 ],
             ],
         ],
+
+        //--- pretty urls ---//
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false
+        ],
+
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
