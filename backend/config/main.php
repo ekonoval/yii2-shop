@@ -11,7 +11,13 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    //'modules' => [],
+    'modules' => [
+        'translate' => [
+            'class' => 'backend\modules\translate\TranslateMod',
+        ],
+    ],
+
     'defaultRoute' => 'order/index',
     'components' => [
         'user' => [
@@ -29,6 +35,10 @@ return [
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
+        ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false
         ],
     ],
     'params' => $params,
