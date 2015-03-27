@@ -1,4 +1,6 @@
 <?php
+use backend\ext\User\BPhpAuthManager;
+
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
@@ -23,6 +25,9 @@ return [
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
+        ],
+        'authManager' => [
+            'class' => BPhpAuthManager::className(),
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

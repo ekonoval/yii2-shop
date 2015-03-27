@@ -1,24 +1,18 @@
 <?php
 return [
-    'createPost' => [
-        'type' => 2,
-        'description' => 'Create a post',
-    ],
-    'updatePost' => [
-        'type' => 2,
-        'description' => 'Update post',
-    ],
-    'author' => [
+    2 => [
         'type' => 1,
         'children' => [
-            'createPost',
+            3,
         ],
     ],
-    'admin' => [
+    3 => [
         'type' => 1,
         'children' => [
-            'updatePost',
-            'author',
+            4,
         ],
+    ],
+    4 => [
+        'type' => 1,
     ],
 ];
