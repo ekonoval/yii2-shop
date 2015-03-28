@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -30,6 +31,10 @@ class SiteController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+                    [
+                        'actions' => ['test'],
+                        'allow' => true,
+                    ],
                 ],
             ],
             'verbs' => [
@@ -55,6 +60,12 @@ class SiteController extends Controller
 
     public function actionLogin()
     {
+//        $user = new User();
+//        $user->username = "sunsey";
+//        $user->setPassword(1);
+//        $user->save();
+//        exit;
+
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -74,5 +85,11 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    public function actionTest()
+    {
+        session_start();
+        var_dump($_SESSION);exit;
     }
 }
