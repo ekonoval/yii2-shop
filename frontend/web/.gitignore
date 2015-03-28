@@ -1,2 +1,5 @@
 /index.php
 /index-test.php
+
+#have to be symlinked to @backend/web
+/admin
