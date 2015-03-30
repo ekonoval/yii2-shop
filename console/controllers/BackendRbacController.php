@@ -2,7 +2,7 @@
 namespace console\controllers;
 
 use backend\ext\User\BPhpAuthManager;
-use backend\ext\User\UserRbac;
+use backend\ext\User\BUserRbac;
 use Yii;
 use yii\console\Controller;
 
@@ -14,9 +14,9 @@ class BackendRbacController extends Controller
 
         $auth->removeAll();
 
-        $adminSuperRole = $auth->createRole(UserRbac::ROLE_ADMIN_SUPER);
-        $adminRole = $auth->createRole(UserRbac::ROLE_ADMIN);
-        $operRole = $auth->createRole(UserRbac::ROLE_OPER);
+        $adminSuperRole = $auth->createRole(BUserRbac::ROLE_ADMIN_SUPER);
+        $adminRole = $auth->createRole(BUserRbac::ROLE_ADMIN);
+        $operRole = $auth->createRole(BUserRbac::ROLE_OPER);
 
         $auth->add($adminSuperRole);
 

@@ -27,7 +27,7 @@ class BWebUser extends User
             $this->permissionsAlreadyApplied = true;
             $authManager = Yii::$app->authManager;
 
-            $roleInt = UserRbac::ROLE_OPER;
+            $roleInt = BUserRbac::ROLE_OPER;
             //$roleInt = UserRbac::ROLE_ADMIN;
             //$roleInt = UserRbac::ROLE_ADMIN_SUPER;
             $role = $authManager->createRole($roleInt);
