@@ -6,15 +6,10 @@ use yii\web\User;
 
 class BWebUser extends User
 {
+    /**
+     * Avoid duplication of roles/premissions assignments
+     */
     private $permissionsAlreadyApplied = false;
-
-//    private $fake;
-//    public function init()
-//    {
-//        $this->fake = time();
-//        parent::init();
-//    }
-
 
     public function getIdentity($autoRenew = true)
     {
@@ -25,8 +20,13 @@ class BWebUser extends User
             && $this->permissionsAlreadyApplied == false
         ) {
             $this->permissionsAlreadyApplied = true;
+
             $authManager = Yii::$app->authManager;
 
+            /**
+             * Assign roles2user dynamically on each request,
+             * take role from identity
+             */
             $roleInt = BUserRbac::ROLE_OPER;
             //$roleInt = UserRbac::ROLE_ADMIN;
             //$roleInt = UserRbac::ROLE_ADMIN_SUPER;
