@@ -10,4 +10,16 @@ class BPhpAuthManager extends PhpManager
     public $assignmentFile = '@backend/rbac/assignments.php';
 
     public $ruleFile = '@backend/rbac/rules.php';
+
+    /**
+     * This method is called every time rule or permission is added or revoked and 'assignements' file is regenerated.
+     * We want to save only roles hierarchy (performed via console command 'backend-rbac/init')
+     * not the assignements for each user. Assignments are done manually on each request.
+     * @inheritdoc
+     */
+    protected function saveToFile($data, $file)
+    {
+        //file_put_contents($file, "<?php\nreturn " . VarDumper::export($data) . ";\n", LOCK_EX);
+    }
+
 }

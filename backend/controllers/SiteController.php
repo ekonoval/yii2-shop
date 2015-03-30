@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use backend\ext\User\UserRbac;
 use common\models\User;
 use Yii;
 use yii\filters\AccessControl;
@@ -34,6 +35,7 @@ class SiteController extends Controller
                     [
                         'actions' => ['test'],
                         'allow' => true,
+                        'roles' => [UserRbac::ROLE_OPER]
                     ],
                 ],
             ],
@@ -89,7 +91,15 @@ class SiteController extends Controller
 
     public function actionTest()
     {
-        session_start();
-        var_dump($_SESSION);exit;
+        $user = Yii::$app->user;
+        if (!$user->isGuest) {
+            //$roleInt =
+            $res = $user->can(UserRbac::ROLE_OPER);
+            $res = $user->can(UserRbac::ROLE_ADMIN);
+            $res = $user->can(UserRbac::ROLE_ADMIN_SUPER);
+            var_dump($res);
+        }
+//        session_start();
+//        var_dump($_SESSION);exit;
     }
 }

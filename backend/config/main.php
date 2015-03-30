@@ -1,5 +1,6 @@
 <?php
 use backend\ext\User\BPhpAuthManager;
+use backend\ext\User\BWebUser;
 
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
@@ -23,6 +24,7 @@ return [
     'defaultRoute' => 'order/index',
     'components' => [
         'user' => [
+            'class' => BWebUser::className(),
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
         ],

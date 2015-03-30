@@ -1,6 +1,9 @@
 <?php
 namespace backend\ext\User;
 
+/**
+ * See @console/BackendRbacController/init for roles relations
+ */
 class UserRbac
 {
     const ROLE_ADMIN_SUPER = 2;
